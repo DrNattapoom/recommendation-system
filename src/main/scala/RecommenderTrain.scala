@@ -10,7 +10,6 @@ object RecommenderTrain {
     // initialize Spark
     val conf = new SparkConf()
       .setAppName("RecommenderTrain")
-      .setMaster("local")
     val sc = new SparkContext(conf)
 
     println("master = " + sc.master)
@@ -19,9 +18,9 @@ object RecommenderTrain {
     setLogger()
 
     // set up data path
-    val dataPath = "/path/to/u.data"
-    val modelPath = "/path/to/ALSmodel"
-    val checkpointPath = "/path/to/checkpoint/"
+    val dataPath = "hdfs://localhost:9000/path/to/u.data"
+    val modelPath = "hdfs://localhost:9000/path/to/ALSmodel"
+    val checkpointPath = "hdfs://localhost:9000/path/to/checkpoint/"
     // set checkpoint directory to avoid stackoverflow error
     sc.setCheckpointDir(checkpointPath)
 

@@ -21,7 +21,6 @@ object Recommender {
     val conf = new SparkConf()
       .setAppName("Recommender")
       .set("spark.ui.showConsoleProgress", "false")
-      .setMaster("local")
     val sc = new SparkContext(conf)
 
     println("master = " + sc.master)
@@ -29,10 +28,10 @@ object Recommender {
     // set up logger
     setLogger()
 
-    // set up data path
-    val dataPath = "/path/to/u.item"
-    val modelPath = "/path/to/ALSmodel"
-    val checkpointPath = "/path/to/checkpoint/"
+    // set up data path on HDFS
+    val dataPath = "hdfs://localhost:9000/path/to/u.item"
+    val modelPath = "hdfs://localhost:9000/path/to/ALSmodel"
+    val checkpointPath = "hdfs://localhost:9000/path/to/checkpoint/"
     // set checkpoint directory to avoid stackoverflow error
     sc.setCheckpointDir(checkpointPath)
 
