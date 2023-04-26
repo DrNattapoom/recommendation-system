@@ -12,6 +12,7 @@ Collaborative Filtering Machine Learning using Alternating Least Square (ALS) Al
 │           │   └── MANIFEST.MF
 │           ├── Recommender.scala
 │           └── RecommenderTrain.scala
+├── .gitignore
 ├── README.md
 └── build.sbt
 ```
@@ -50,3 +51,5 @@ spark-submit --class Recommender --master yarn --deploy-mode client /path/to/pac
 ```
 
 <b> Note: </b> Please make sure to train the model first.
+
+P.S. If you do not want to set up Scala and Apahce Hadoop, please check out <a href = "https://github.com/DrNattapoom/recommendation-system-pyspark">recommendation-system-pyspark</a> which is an alternative implementation that uses Python and a Databricks cluster instead.
