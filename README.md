@@ -27,3 +27,26 @@ Hadoop 3.2.2
 
 # Dataset
 The dataset used in this project is the <b>ml-100k</b> dataset taken from <a href="https://grouplens.org/datasets/movielens/">GroupLens Research</a> at the University of Minnesota.
+
+# Run
+To train the model, please execute the following command.
+```
+spark-submit --class RecommenderTrain --master yarn --deploy-mode client /path/to/package.jar
+```
+Please make sure HDFS and YARN services are running and properly configured.
+
+<b> Note: </b> `package.jar` <b> must be </b> generated first.
+
+The trained model can be used to  
+
+1. Recommend movies to a user with the specified userID 
+```
+spark-submit --class Recommender --master yarn --deploy-mode client /path/to/package.jar --u <userID>
+```
+
+2. Predict which users may be interested in a movie with the specified movieID
+```
+spark-submit --class Recommender --master yarn --deploy-mode client /path/to/package.jar --m <movieID>
+```
+
+<b> Note: </b> Please make sure to train the model first.
